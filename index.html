@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sukh Shanti Dairy | Ladnun </title>
+    <title>Sukh Shanti Dairy | Ladnun - Premium Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -323,33 +323,18 @@
             </div>
         </section>
 
+        <!-- REVIEW SECTION -->
         <section class="py-24 bg-slate-950 text-white px-6">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="text-3xl font-black uppercase italic">Farm to Doorstep</h2>
-                    <div class="w-16 h-1 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                    <div>
+                        <h2 class="text-3xl md:text-5xl font-black uppercase italic leading-none">Customer <br><span class="text-blue-600">Experiences</span></h2>
+                        <div class="w-16 h-1 bg-blue-600 mt-4 rounded-full"></div>
+                    </div>
+                    <button onclick="openAllReviewsModal()" class="mt-8 md:mt-0 bg-slate-800 text-white px-8 py-4 rounded-3xl font-black uppercase text-[9px] tracking-widest hover:bg-blue-600 transition-all transform hover:scale-105">View All Stories</button>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                    <div class="text-center group reveal">
-                        <div class="step-circle mx-auto mb-6 text-slate-900 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 transition-all">01</div>
-                        <h5 class="font-black uppercase text-xs mb-2">Organic Feed</h5>
-                        <p class="text-[9px] text-slate-500 font-bold uppercase">Natural fodder for healthy cattle.</p>
-                    </div>
-                    <div class="text-center group reveal">
-                        <div class="step-circle mx-auto mb-6 text-slate-900 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 transition-all">02</div>
-                        <h5 class="font-black uppercase text-xs mb-2">Safe Milking</h5>
-                        <p class="text-[9px] text-slate-500 font-bold uppercase">Hygienic touch-free process.</p>
-                    </div>
-                    <div class="text-center group reveal">
-                        <div class="step-circle mx-auto mb-6 text-slate-900 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 transition-all">03</div>
-                        <h5 class="font-black uppercase text-xs mb-2">Lab Testing</h5>
-                        <p class="text-[9px] text-slate-500 font-bold uppercase">Quality checked every 4 hours.</p>
-                    </div>
-                    <div class="text-center group reveal">
-                        <div class="step-circle mx-auto mb-6 text-slate-900 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 transition-all">04</div>
-                        <h5 class="font-black uppercase text-xs mb-2">Fast Delivery</h5>
-                        <p class="text-[9px] text-slate-500 font-bold uppercase">Within 4 hours of milking.</p>
-                    </div>
+                <div class="home-reviews-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Top 3 Reviews injected here -->
                 </div>
             </div>
         </section>
@@ -368,7 +353,7 @@
                                 <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mt-2">Founder & CEO</p>
                             </div>
                             <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-blue-600 hover:shadow-xl transition-all">
-                                <h4 class="text-2xl font-black uppercase italic text-slate-900">Mr. Sukhlal ji <span class="text-blue-600">Bardiya</span></h4>
+                                <h4 class="text-2xl font-black uppercase italic text-slate-900">Mr. Sukhlal  <span class="text-blue-600">Bardiya</span></h4>
                                 <p class="text-[10px] text-slate-400 font-black uppercase tracking-widest mt-2">Founder & COO</p>
                             </div>
                         </div>
@@ -453,6 +438,7 @@
                 <div class="mb-8 bg-blue-50/50 rounded-3xl p-6 border border-blue-100/50">
                     <h4 class="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-4">Order Summary</h4>
                     <div id="checkout-summary-list" class="space-y-2 mb-4">
+                        <!-- Items will be injected here via JS -->
                     </div>
                     <div class="flex justify-between items-center pt-4 border-t border-blue-200/30">
                         <span class="font-black text-xs uppercase text-slate-500">Total Payable</span>
@@ -483,6 +469,44 @@
         </div>
     </div>
 
+    <!-- PREMIUM REVIEW MODAL (AUTO TRIGGERED) -->
+    <div id="reviewModal" class="luxury-modal" onclick="closeReviewModal(event)">
+        <div class="bg-white w-full max-w-[450px] rounded-[3.5rem] p-10 relative shadow-2xl overflow-hidden border-t-8 border-blue-600" onclick="event.stopPropagation()">
+            <div class="flex flex-col items-center text-center mb-8">
+                <div class="h-16 w-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl shadow-sm mb-4"><i class="fas fa-award"></i></div>
+                <h3 class="text-2xl font-black uppercase italic leading-tight">Order <span class="text-blue-600">Confirmed!</span></h3>
+                <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-2">While we prepare your order, share your experience</p>
+            </div>
+            
+            <form id="reviewForm" class="space-y-4">
+                <div class="flex items-center gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <span class="text-[10px] font-black text-slate-400 uppercase">Rate Us:</span>
+                    <select id="revRating" class="flex-1 bg-transparent font-black text-blue-600 outline-none uppercase text-xs">
+                        <option value="5">⭐⭐⭐⭐⭐ Premium</option>
+                        <option value="4">⭐⭐⭐⭐ Great</option>
+                        <option value="3">⭐⭐⭐ Good</option>
+                    </select>
+                </div>
+                <textarea id="revText" placeholder="How was the ordering process? Your feedback matters..." class="luxury-input h-32" required></textarea>
+                <button type="submit" class="w-full bg-blue-600 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-xs shadow-lg hover:bg-blue-700 transition-all">Publish Review</button>
+            </form>
+            <button onclick="closeReviewModal()" class="absolute top-6 right-8 text-2xl text-slate-300 hover:text-slate-900 transition-all">&times;</button>
+        </div>
+    </div>
+
+    <!-- ALL REVIEWS MODAL -->
+    <div id="allReviewsModal" class="luxury-modal" onclick="closeAllReviewsModal(event)">
+        <div class="bg-slate-50 w-full max-w-[600px] rounded-[3.5rem] relative shadow-2xl overflow-hidden flex flex-col max-h-[85vh]" onclick="event.stopPropagation()">
+            <div class="p-10 bg-white border-b border-slate-100 flex justify-between items-center">
+                <h3 class="text-2xl font-black uppercase italic">Community <span class="text-blue-600">Feedback</span></h3>
+                <button onclick="closeAllReviewsModal()" class="h-10 w-10 bg-slate-100 rounded-full">&times;</button>
+            </div>
+            <div id="all-reviews-list" class="p-8 overflow-y-auto space-y-6">
+                <!-- All reviews injected here -->
+            </div>
+        </div>
+    </div>
+
     <div id="toast">Item added!</div>
 
     <script>
@@ -498,12 +522,10 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        let products = [], subs = [], slides = [], cart = [], currentCheckoutType = 'single', activeProductIdx = null;
+        let products = [], subs = [], slides = [], reviews = [], cart = [], currentCheckoutType = 'single', activeProductIdx = null;
+        let checkoutDetails = { name: "", phone: "" };
         let editProductId = null, editSubId = null, editSlideId = null;
-        
-        const SECRET_PASS = "7073463665";
-        // यहाँ आप अपने दोनों व्हाट्सएप नंबर डाल सकते हैं
-        const CONTACT_NUMBERS = ["917073463665", "919376917149"]; 
+        const SECRET_PASS = "7073463665", CONTACT_WA = "917073463665";
 
         function checkReveal() {
             const reveals = document.querySelectorAll('.reveal');
@@ -517,13 +539,17 @@
 
         function injectSharedContent() {
             const template = document.getElementById('shared-footer-template').innerHTML;
-            document.querySelectorAll('.common-footer-content').forEach(container => container.innerHTML = template);
-            setTimeout(checkReveal, 500); 
+            document.querySelectorAll('.common-footer-content').forEach(container => {
+                container.innerHTML = template;
+            });
+            setTimeout(() => {
+                renderHomeReviews(); 
+                checkReveal();
+            }, 100); 
         }
 
         async function loadData() {
             try {
-                injectSharedContent(); 
                 const pS = await db.collection("products").orderBy("name").get();
                 products = pS.docs.map(d => ({ id: d.id, ...d.data() }));
                 const suS = await db.collection("subs").get();
@@ -531,6 +557,12 @@
                 const slS = await db.collection("slides").get();
                 slides = slS.docs.map(d => ({ id: d.id, ...d.data() }));
                 if(slides.length === 0) slides = [{ title: "PURE FRESHNESS", desc: "Elite Quality Dairy", img: "https://pngimg.com/uploads/milk/milk_PNG12764.png", theme: "theme-milk" }];
+                
+                // Fetch Reviews
+                const rvS = await db.collection("reviews").orderBy("date", "desc").get();
+                reviews = rvS.docs.map(d => d.data());
+
+                injectSharedContent(); 
                 refreshUI();
             } catch (e) { console.error(e); }
             finally { document.getElementById('loader').classList.add('hidden'); startHeroSlider(); }
@@ -538,6 +570,79 @@
 
         function refreshUI() { renderHeroSlides(); renderHomeCategories(); renderShop(products); renderPlans(); renderAdminManage(); updateCartBadge(); checkReveal(); }
 
+        // --- REVIEW SYSTEM ---
+        function renderHomeReviews() {
+            const containers = document.querySelectorAll('.home-reviews-grid');
+            const top3 = reviews.slice(0, 3);
+            const html = top3.length === 0 ? 
+                `<p class="col-span-full text-center text-slate-500 font-black uppercase text-[9px] py-10">No reviews yet.</p>` :
+                top3.map(r => `
+                    <div class="bg-slate-900/40 p-10 rounded-[2.5rem] border border-slate-800/50 hover:border-blue-600 transition-all reveal shadow-sm">
+                        <div class="text-blue-500 mb-6 text-[10px]">${'⭐'.repeat(r.rating)}</div>
+                        <p class="text-xs font-medium text-slate-300 leading-loose uppercase mb-8 italic">"${r.text}"</p>
+                        <div class="flex items-center gap-4 border-t border-slate-800 pt-6">
+                            <div class="h-10 w-10 bg-blue-600 rounded-2xl flex items-center justify-center font-black text-white uppercase shadow-lg">${r.name.charAt(0)}</div>
+                            <div>
+                                <h4 class="text-[10px] font-black uppercase tracking-wider text-white">${r.name}</h4>
+                                <p class="text-[8px] font-bold text-slate-500 uppercase tracking-widest">Verified Customer</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            
+            containers.forEach(c => c.innerHTML = html);
+        }
+
+        async function triggerReviewPopup(phone, name) {
+            // Check if already reviewed
+            const check = await db.collection("reviews").where("phone", "==", phone).get();
+            if (check.empty) {
+                checkoutDetails = { name, phone };
+                document.getElementById('reviewModal').classList.add('active');
+            }
+        }
+
+        function closeReviewModal() { document.getElementById('reviewModal').classList.remove('active'); }
+
+        document.getElementById('reviewForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const rating = parseInt(document.getElementById('revRating').value);
+            const text = document.getElementById('revText').value;
+
+            try {
+                await db.collection("reviews").add({
+                    name: checkoutDetails.name, 
+                    phone: checkoutDetails.phone, 
+                    rating, 
+                    text, 
+                    date: new Date().toISOString()
+                });
+                showToast("Experience Published!");
+                closeReviewModal();
+                loadData(); 
+            } catch (error) { alert("Submission failed."); }
+        };
+
+        function openAllReviewsModal() {
+            const list = document.getElementById('all-reviews-list');
+            list.innerHTML = reviews.map(r => `
+                <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="text-blue-600 text-[10px] font-black">${'⭐'.repeat(r.rating)}</div>
+                        <span class="text-[8px] text-slate-300 font-bold uppercase">${new Date(r.date).toLocaleDateString()}</span>
+                    </div>
+                    <p class="text-xs font-medium text-slate-500 uppercase leading-relaxed mb-6">"${r.text}"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="h-8 w-8 bg-slate-900 text-white rounded-xl flex items-center justify-center font-black text-[10px]">${r.name.charAt(0)}</div>
+                        <h4 class="text-[9px] font-black uppercase text-slate-900">${r.name}</h4>
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('allReviewsModal').classList.add('active');
+        }
+        function closeAllReviewsModal() { document.getElementById('allReviewsModal').classList.remove('active'); }
+
+        // --- CORE FUNCTIONS ---
         function renderHeroSlides() {
             document.getElementById('hero-slider').innerHTML = slides.map((s, i) => `
                 <div class="slide ${s.theme || 'theme-milk'} ${i === 0 ? 'active' : ''}">
@@ -658,11 +763,16 @@
             else cart.forEach(c => msg += `• ${c.name} (${c.qty})%0A`);
             msg += `%0A💰 *TOTAL: ₹${document.getElementById('checkoutTotal').innerText}*`;
             
-            // दोनों नंबरों में से रैंडम एक नंबर चुनना (Order distribution)
-            const randomNum = CONTACT_NUMBERS[Math.floor(Math.random() * CONTACT_NUMBERS.length)];
-            window.open(`https://wa.me/${randomNum}?text=${msg}`);
+            // Open WhatsApp
+            window.open(`https://wa.me/${CONTACT_WA}?text=${msg}`);
             
-            if(currentCheckoutType === 'cart') cart = []; updateCartUI(); closeCheckoutModal();
+            // Reset & Trigger Review Modal
+            if(currentCheckoutType === 'cart') cart = []; 
+            updateCartUI(); 
+            closeCheckoutModal();
+            
+            // SHOW REVIEW MODAL AFTER WHATSAPP
+            setTimeout(() => triggerReviewPopup(ph, n), 1000);
         };
 
         function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('translate-x-full'); document.getElementById('cart-overlay').classList.toggle('hidden'); }
@@ -692,11 +802,7 @@
         function showToast(m) { const t=document.getElementById('toast'); t.innerText=m; t.className="show"; setTimeout(()=>t.className="",2500); }
         function checkAdminPass() { if(prompt("Elite PIN?") === SECRET_PASS) showPage('admin'); }
         function filterShop() { const q=document.getElementById('shopSearch').value.toLowerCase(); renderShop(products.filter(p=>p.name.toLowerCase().includes(q))); }
-        
-        function subWA(plan) { 
-            const randomNum = CONTACT_NUMBERS[Math.floor(Math.random() * CONTACT_NUMBERS.length)];
-            window.open(`https://wa.me/${randomNum}?text=I want to join *${plan}* Membership.`); 
-        }
+        function subWA(plan) { window.open(`https://wa.me/${CONTACT_WA}?text=I want to join *${plan}* Membership.`); }
 
         document.getElementById('adminProForm').onsubmit = async (e) => {
             e.preventDefault();
