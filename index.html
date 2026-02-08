@@ -1,3 +1,5 @@
+--- START OF FILE Paste February 08, 2026 - 1:19AM ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,31 +34,19 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
+        /* Updated Luxury Modal for Full Page Feel */
         .luxury-modal { 
             display: none; position: fixed; inset: 0; z-index: 500; 
-            align-items: center; justify-content: center; padding: 15px;
-            background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(15px);
-            animation: modalFade 0.4s ease-out;
+            background: white; overflow-y: auto;
+            animation: modalFade 0.3s ease-out;
         }
-        .luxury-modal.active { display: flex; }
-        @keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
+        .luxury-modal.active { display: block; }
+        @keyframes modalFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
         .modal-content-small { 
-            background: white; width: 100%; max-width: 900px; border-radius: 3.5rem; 
-            overflow: hidden; position: relative; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.6);
-            max-height: 90vh; display: flex; flex-direction: column;
+            background: white; width: 100%; min-height: 100vh;
+            position: relative;
         }
-        .modal-scroll-area { overflow-y: auto; display: flex; flex-direction: column; height: 100%; }
-        @media (min-width: 768px) { .modal-scroll-area { flex-direction: row; } }
-
-        .modal-img-side { 
-            background: radial-gradient(circle, #f8fafc 0%, #e2e8f0 100%); width: 100%; flex-shrink: 0; display: flex; 
-            align-items: center; justify-content: center; padding: 40px; position: relative;
-        }
-        @media (min-width: 768px) { .modal-img-side { width: 45%; } }
-        
-        .modal-info-side { padding: 45px; width: 100%; display: flex; flex-direction: column; }
-        .price-badge { background: var(--p); color: white; padding: 10px 24px; border-radius: 100px; font-weight: 900; font-size: 1.4rem; display: inline-block; box-shadow: 0 10px 20px rgba(30, 64, 175, 0.3); }
 
         .heritage-card { background: white; border-radius: 3rem; overflow: hidden; border: 1px solid #f1f5f9; transition: 0.4s; }
         .heritage-card:hover { border-color: var(--p); transform: translateY(-5px); }
@@ -389,32 +379,87 @@
         <button onclick="checkAdminPass()" class="text-[8px] text-slate-700 font-bold uppercase tracking-[0.4em] hover:text-white transition-all">© Arigh 2026. All Rights Reserved.</button>
     </footer>
 
-    <!-- 🔥 LUXURY PRODUCT MODAL -->
+    <!-- 🔥 LUXURY PRODUCT MODAL (UPDATED TO ADVANCED FULL PAGE) -->
     <div id="productModal" class="luxury-modal" onclick="closeProductModal(event)">
         <div class="modal-content-small" onclick="event.stopPropagation()">
-            <button onclick="closeProductModal()" class="absolute top-6 right-6 text-2xl text-slate-400 hover:text-slate-900 z-50 bg-white/90 rounded-full h-12 w-12 flex items-center justify-center shadow-xl transition-all">&times;</button>
-            <div class="modal-scroll-area">
-                <div class="modal-img-side">
-                    <div class="absolute top-10 left-10 purity-pill shadow-sm"><i class="fas fa-medal"></i> ELITE QUALITY</div>
-                    <img id="modalImg" src="" class="max-h-[300px] md:max-h-[420px] object-contain drop-shadow-[0_40px_40px_rgba(0,0,0,0.2)] transform hover:scale-105 transition-all duration-700">
+            <!-- Top Nav Bar -->
+            <div class="sticky top-0 bg-white border-b border-slate-100 z-[60] px-4 h-14 flex items-center justify-between">
+                <button onclick="closeProductModal()" class="flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-all">
+                    <i class="fas fa-arrow-left text-sm"></i>
+                    <span class="text-[11px] font-bold uppercase tracking-widest">Back</span>
+                </button>
+                <div class="flex gap-4 items-center">
+                    <i class="fas fa-share-nodes text-slate-400 text-sm cursor-pointer hover:text-blue-600"></i>
+                    <i class="far fa-heart text-slate-400 text-sm cursor-pointer hover:text-red-500"></i>
                 </div>
-                <div class="modal-info-side">
-                    <div class="mb-auto">
-                        <span id="modalCat" class="text-blue-600 font-black uppercase text-[10px] tracking-[0.4em] mb-4 block">Product Category</span>
-                        <h3 id="modalName" class="text-3xl md:text-5xl font-black uppercase italic mb-6 leading-[1.1] text-slate-900 tracking-tighter">Product Name</h3>
-                        <div class="flex items-center gap-6 mb-10">
-                            <div class="price-badge" id="modalPrice">₹00</div>
-                            <span class="text-slate-400 font-black text-xs uppercase tracking-widest">Premium Freshness</span>
+            </div>
+
+            <div class="max-w-[1200px] mx-auto px-4 py-8 md:py-12">
+                <div class="flex flex-col md:flex-row gap-10 lg:gap-16">
+                    <!-- Left: Image (Sticky) -->
+                    <!-- Left: Image (Sticky) -->
+<div class="w-full md:w-1/2 flex flex-col">
+    <div class="md:sticky md:top-24 bg-[#f7f8fa] rounded-[2rem] overflow-hidden flex items-center justify-center h-[350px] md:h-[500px] p-4 shadow-inner relative">
+        <!-- Elite Pill Overlay -->
+        <div class="absolute top-4 left-4 purity-pill shadow-sm z-10 bg-white/90">
+            <i class="fas fa-medal text-blue-600"></i> ELITE QUALITY
+        </div>
+        
+        <!-- Smart Fit Image -->
+        <img id="modalImg" src="" 
+            class="max-w-full max-h-full w-auto h-auto object-contain transition-transform duration-700 hover:scale-110 mix-blend-multiply" 
+            alt="Product View">
+    </div>
+    
+    <!-- Optional: Multi-angle prompt (Amazon style) -->
+    <p class="text-center text-[9px] font-black text-slate-300 uppercase tracking-widest mt-4">
+        <i class="fas fa-magnifying-glass-plus mr-1"></i> Hover to zoom freshness
+    </p>
+</div>
+
+                    <!-- Right: Info -->
+                    <div class="w-full md:w-1/2 flex flex-col">
+                        <div class="border-b border-slate-100 pb-6 mb-6">
+                            <span id="modalCat" class="text-blue-600 font-black uppercase text-[10px] tracking-[0.4em] mb-3 block">Category</span>
+                            <h3 id="modalName" class="text-2xl md:text-3xl font-black uppercase italic mb-4 leading-tight text-slate-900 tracking-tighter">Product Name</h3>
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="flex text-yellow-400 text-[10px]">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-[11px] font-bold text-blue-600 tracking-wider">PREMIUM FRESHNESS</span>
+                            </div>
+                            <div class="flex items-baseline gap-3">
+                                <div class="text-2xl font-black text-slate-900" id="modalPrice">₹00</div>
+                                <span class="text-slate-400 text-[11px] font-bold uppercase">Incl. all taxes</span>
+                            </div>
                         </div>
-                        <p id="modalDesc" class="text-slate-500 font-medium text-sm leading-loose mb-10 uppercase text-justify"></p>
-                        <div class="grid grid-cols-2 gap-4 border-t border-slate-50 pt-8 mb-10">
-                            <div class="flex items-center gap-3 text-[10px] font-black text-slate-400 uppercase"><i class="fas fa-truck-fast text-blue-600"></i> Fast Delivery</div>
-                            <div class="flex items-center gap-3 text-[10px] font-black text-slate-400 uppercase"><i class="fas fa-vial text-green-600"></i> Lab Verified</div>
+
+                        <div class="mb-8">
+                            <h4 class="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-4">Product Details</h4>
+                            <p id="modalDesc" class="text-slate-600 font-medium text-[13px] leading-relaxed uppercase text-justify"></p>
                         </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <button id="modalBuyBtn" class="flex-[3] bg-slate-950 text-white h-[70px] rounded-3xl font-black uppercase text-xs tracking-[0.2em] shadow-2xl hover:bg-blue-700 transition-all transform active:scale-95">Proceed to Order</button>
-                        <button id="modalAddBtn" class="flex-1 bg-slate-100 text-slate-900 h-[70px] rounded-3xl flex items-center justify-center text-xl hover:bg-blue-600 hover:text-white transition-all transform active:scale-95"><i class="fas fa-cart-plus"></i></button>
+
+                        <!-- Trust Markers -->
+                        <div class="grid grid-cols-2 gap-3 mb-10">
+                            <div class="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                                <i class="fas fa-truck-fast text-blue-600 text-sm"></i>
+                                <span class="text-[9px] font-black text-slate-500 uppercase tracking-widest">Fast Home Delivery</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                                <i class="fas fa-vial text-green-600 text-sm"></i>
+                                <span class="text-[9px] font-black text-slate-500 uppercase tracking-widest">Lab Tested Pure</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex gap-3 mt-auto sticky bottom-4 md:relative">
+                            <button id="modalAddBtn" class="flex-1 bg-white border-2 border-slate-900 text-slate-900 h-14 rounded-2xl flex items-center justify-center text-sm font-black uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all active:scale-95">
+                                <i class="fas fa-cart-plus mr-2"></i> Add To Basket
+                            </button>
+                            <button id="modalBuyBtn" class="flex-[1.5] bg-[#FB923C] hover:bg-[#F97316] text-white h-14 rounded-2xl font-black uppercase text-[11px] tracking-[0.2em] shadow-xl transition-all active:scale-95">
+                                Buy Now on WhatsApp
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -423,7 +468,7 @@
 
     <!-- REFINED PROFESSIONAL CHECKOUT MODAL -->
     <div id="checkoutModal" class="luxury-modal" onclick="closeCheckoutModal(event)">
-        <div class="bg-white w-full max-w-[500px] rounded-[3.5rem] relative shadow-2xl overflow-hidden flex flex-col max-h-[90vh]" onclick="event.stopPropagation()">
+        <div class="bg-white w-full max-w-[500px] rounded-[3.5rem] relative shadow-2xl overflow-hidden flex flex-col max-h-[90vh] mx-auto my-10" onclick="event.stopPropagation()">
             <!-- Modal Header -->
             <div class="bg-slate-50 px-10 py-8 border-b border-slate-100 flex justify-between items-center">
                 <div>
@@ -471,7 +516,7 @@
 
     <!-- PREMIUM REVIEW MODAL (AUTO TRIGGERED) -->
     <div id="reviewModal" class="luxury-modal" onclick="closeReviewModal(event)">
-        <div class="bg-white w-full max-w-[450px] rounded-[3.5rem] p-10 relative shadow-2xl overflow-hidden border-t-8 border-blue-600" onclick="event.stopPropagation()">
+        <div class="bg-white w-full max-w-[450px] rounded-[3.5rem] p-10 relative shadow-2xl overflow-hidden border-t-8 border-blue-600 mx-auto my-10" onclick="event.stopPropagation()">
             <div class="flex flex-col items-center text-center mb-8">
                 <div class="h-16 w-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl shadow-sm mb-4"><i class="fas fa-award"></i></div>
                 <h3 class="text-2xl font-black uppercase italic leading-tight">Order <span class="text-blue-600">Confirmed!</span></h3>
@@ -496,7 +541,7 @@
 
     <!-- ALL REVIEWS MODAL -->
     <div id="allReviewsModal" class="luxury-modal" onclick="closeAllReviewsModal(event)">
-        <div class="bg-slate-50 w-full max-w-[600px] rounded-[3.5rem] relative shadow-2xl overflow-hidden flex flex-col max-h-[85vh]" onclick="event.stopPropagation()">
+        <div class="bg-slate-50 w-full max-w-[600px] rounded-[3.5rem] relative shadow-2xl overflow-hidden flex flex-col max-h-[85vh] mx-auto my-10" onclick="event.stopPropagation()">
             <div class="p-10 bg-white border-b border-slate-100 flex justify-between items-center">
                 <h3 class="text-2xl font-black uppercase italic">Community <span class="text-blue-600">Feedback</span></h3>
                 <button onclick="closeAllReviewsModal()" class="h-10 w-10 bg-slate-100 rounded-full">&times;</button>
@@ -717,7 +762,7 @@
                 buyBtn.onclick = null;
                 addBtn.style.display = 'none';
             } else {
-                buyBtn.innerText = "Proceed to Order";
+                buyBtn.innerText = "Buy Now on WhatsApp";
                 buyBtn.onclick = () => openCheckoutModal('single');
                 addBtn.style.display = 'flex';
                 addBtn.onclick = (e) => { e.stopPropagation(); addToCart(null, activeProductIdx); };
