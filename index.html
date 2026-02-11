@@ -457,7 +457,7 @@
                                 <i class="fas fa-cart-plus mr-2"></i> Add To Basket
                             </button>
                             <button id="modalBuyBtn" class="flex-[1.5] bg-[#FB923C] hover:bg-[#F97316] text-white h-14 rounded-2xl font-black uppercase text-[11px] tracking-[0.2em] shadow-xl transition-all active:scale-95">
-                                Buy Now on WhatsApp
+                                Buy Now
                             </button>
                         </div>
                     </div>
@@ -762,7 +762,7 @@
                 buyBtn.onclick = null;
                 addBtn.style.display = 'none';
             } else {
-                buyBtn.innerText = "Buy Now on WhatsApp";
+                buyBtn.innerText = "Buy Now";
                 buyBtn.onclick = () => openCheckoutModal('single');
                 addBtn.style.display = 'flex';
                 addBtn.onclick = (e) => { e.stopPropagation(); addToCart(null, activeProductIdx); };
